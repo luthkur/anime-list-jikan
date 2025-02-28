@@ -10,8 +10,8 @@ import Image from "next/image";
 
 const AnimeCard = ({ anime }) => {
   return (
-    <Card className="w-40 max-w-40">
-      <CardHeader>
+    <Card>
+      <CardHeader className="w-3xs">
         <CardTitle>{anime.title}</CardTitle>
       </CardHeader>
       <CardContent>
