@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Image from "next/image";
+import Link from "next/link";
 
 const AnimeCard = ({ anime }) => {
   return (
@@ -16,13 +17,15 @@ const AnimeCard = ({ anime }) => {
       </CardHeader>
       <CardContent>
         <CardDescription className="h-[220px] w-[160px] relative">
-          <Image
-            src={anime.images.webp.large_image_url}
-            alt={anime.title}
-            sizes="100%"
-            layout="fill"
-            unoptimized
-          />
+          <Link href={`anime/${anime.mal_id}`}>
+            <Image
+              src={anime.images.webp.large_image_url}
+              alt={anime.title}
+              sizes="100%"
+              layout="fill"
+              unoptimized
+            />
+          </Link>
         </CardDescription>
       </CardContent>
     </Card>
