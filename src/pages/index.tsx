@@ -28,7 +28,7 @@ export const getServerSideProps = async () => {
 
   await queryClient.prefetchQuery({
     queryKey: ["animesSearch"],
-    queryFn: fetchAnimesSearch,
+    queryFn: () => fetchAnimesSearch(),
   });
 
   return {
@@ -41,7 +41,7 @@ export const getServerSideProps = async () => {
 export default function Home({}) {
   const { data, error } = useQuery({
     queryKey: ["animesSearch"],
-    queryFn: fetchAnimesSearch,
+    queryFn: () => fetchAnimesSearch(),
   });
 
   let AnimeList = <div>List is Loading</div>;
