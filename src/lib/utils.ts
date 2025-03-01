@@ -8,6 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 export function objectToQueryParams(params: object) {
   // Filter out null or undefined values
   const filteredParams = Object.entries(params).filter(
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     ([_, value]) => value !== null && value !== undefined
   );
 

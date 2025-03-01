@@ -194,16 +194,16 @@ export interface AnimeFullDetailData {
   favorites: number;
   synopsis: string;
   background: string;
-  season: any;
-  year: any;
+  season: null | string;
+  year: null | number;
   broadcast: Broadcast;
   producers: Producer[];
   licensors: Licensor[];
   studios: Studio[];
   genres: Genre[];
-  explicit_genres: any[];
+  explicit_genres: unknown[];
   themes: Theme[];
-  demographics: any[];
+  demographics: unknown[];
   relations: Relation[];
   theme: Theme2;
   external: External[];
@@ -228,18 +228,18 @@ export interface Webp {
 }
 
 export interface Trailer {
-  youtube_id: any;
-  url: any;
-  embed_url: any;
+  youtube_id: string;
+  url: string;
+  embed_url: string;
   images: Images2;
 }
 
 export interface Images2 {
-  image_url: any;
-  small_image_url: any;
-  medium_image_url: any;
-  large_image_url: any;
-  maximum_image_url: any;
+  image_url: string;
+  small_image_url: string;
+  medium_image_url: string;
+  large_image_url: string;
+  maximum_image_url: string;
 }
 
 export interface Title {
@@ -249,7 +249,7 @@ export interface Title {
 
 export interface Aired {
   from: string;
-  to: any;
+  to: string;
   prop: Prop;
   string: string;
 }

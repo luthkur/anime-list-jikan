@@ -21,7 +21,7 @@ export const getServerSideProps = async (context) => {
 const Anime = () => {
   const router = useRouter();
   const { id } = router.query;
-  const { data, error } = useQuery({
+  const { data } = useQuery({
     queryKey: [`anime-detail-${id}`],
     queryFn: () => fetchAnimeById(id),
   });

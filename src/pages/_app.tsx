@@ -7,7 +7,6 @@ import {
 } from "@tanstack/react-query";
 import { NuqsAdapter } from "nuqs/adapters/next/pages";
 
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { useState } from "react";
 import Layout from "../components/Layout";
 
