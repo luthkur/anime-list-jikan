@@ -1,17 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
-
+import { objectToQueryParams } from "@/lib/utils";
 import { AnimeData } from "../types";
 
-const fetchAnimesSearch = async (limit = 10): Promise<AnimeData> => {
-  const response = await fetch("https://api.jikan.moe/v4/anime");
+const fetchAnimesSearch = async (query): Promise<AnimeData> => {
+  const response = await fetch(
+    `https://api.jikan.moe/v4/anime${objectToQueryParams(query)}`
+  );
   const data = await response.json();
   return data;
 };
 
-const useAnimesSearch = (limit: number) => {
+const useAnimesSearch = (query) => {
   return useQuery({
-    queryKey: ["animesSearch", limit],
-    queryFn: () => fetchAnimesSearch(limit),
+    queryKey: ["animesSearch", query],
+    queryFn: () => fetchAnimesSearch(query),
   });
 };
 

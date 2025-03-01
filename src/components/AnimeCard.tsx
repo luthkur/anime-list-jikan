@@ -12,7 +12,7 @@ import Link from "next/link";
 const AnimeCard = ({ anime }) => {
   return (
     <Card>
-      <CardHeader className="w-3xs">
+      <CardHeader className="w-40">
         <CardTitle>{anime.title}</CardTitle>
       </CardHeader>
       <CardContent>
@@ -22,7 +22,7 @@ const AnimeCard = ({ anime }) => {
               src={anime.images.webp.large_image_url}
               alt={anime.title}
               sizes="100%"
-              layout="fill"
+              fill
               unoptimized
             />
           </Link>
