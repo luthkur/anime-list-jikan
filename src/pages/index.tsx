@@ -1,6 +1,4 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
-import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
+import { dehydrate, QueryClient } from "@tanstack/react-query";
 import { fetchAnimesSearch, useAnimesSearch } from "@/hooks/useAnimesSearch";
 import AnimeCard from "@/components/AnimeCard";
 import {
@@ -13,20 +11,9 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { Fragment, JSX, useState } from "react";
 import { useRouter } from "next/router";
 import { parseAsInteger, useQueryState } from "nuqs";
-import { debounce } from "@/lib/utils";
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const getServerSideProps = async (context) => {
   const query = context.query;
