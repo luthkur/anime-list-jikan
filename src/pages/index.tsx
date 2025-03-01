@@ -15,10 +15,9 @@ import { Fragment, JSX, useState } from "react";
 import { useRouter } from "next/router";
 import { parseAsInteger, useQueryState } from "nuqs";
 import type { GetServerSideProps } from "next";
-
+import { Button } from "@/components/ui/button";
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const query = context.query;
-  console.log(query);
 
   const queryClient = new QueryClient();
 
@@ -39,13 +38,13 @@ export default function Home() {
   const [search, setSearch] = useQueryState("q", {
     // Send updates to the server maximum once every second
     shallow: false,
-    throttleMs: 1000,
+    throttleMs: 2000,
     defaultValue: "",
   });
+
   const [searchBar, setSearchBar] = useState(search);
 
   const { query } = router;
-  console.log(query);
 
   const [currentPage, setCurrentPage] = useQueryState(
     "page",
@@ -150,6 +149,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col m-10 items-center gap-6">
+      <h1>Anime List: Browse throught our Anime list</h1>
       <div className="flex w-full max-w-sm justify-center items-center space-x-2">
         <Input
           type="search"
@@ -157,9 +157,20 @@ export default function Home() {
           placeholder="Search Anime"
           onChange={(e) => {
             setSearchBar(e.target.value);
-            setSearch(e.target.value);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              setSearch(searchBar);
+            }
           }}
         />
+        <Button
+          onClick={() => {
+            setSearch(searchBar);
+          }}
+        >
+          Search
+        </Button>
       </div>
       <div className="flex flex-wrap gap-8 justify-center items-center ">
         {AnimeList}

@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Image from "next/image";
+import dayjs from "dayjs";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.query;
@@ -39,14 +40,14 @@ const Anime = () => {
   if (data) {
     const { data: anime } = data;
     AnimeDetail = (
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <Card>
             <CardHeader className="w-40">
               <CardTitle>{anime.title}</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col gap-2">
-              <CardDescription className="h-[220px] w-[160px] relative">
+              <CardDescription className="h-[440px] w-[320px] relative">
                 <Image
                   src={anime.images.webp.large_image_url}
                   alt={anime.title}
@@ -99,7 +100,8 @@ const Anime = () => {
                 <span>Episodes: {anime.episodes}</span>
                 <span>Status: {anime.status}</span>
                 <span>
-                  Aired: {anime.aired.from} to {anime.aired.to}
+                  Aired: {dayjs(anime.aired.from).format("DD/MM/YYYY")} to{" "}
+                  {dayjs(anime.aired.to).format("DD/MM/YYYY")}
                 </span>
                 <span>
                   Premiered: {anime.season} {anime.year}
@@ -121,30 +123,6 @@ const Anime = () => {
                 <span>Themes: Adult Cast, Urban Fantasy</span>
                 <span>Duration: 23 min. per ep.</span>
                 <span>Rating: R - 17+ (violence & profanity)</span>
-                <span>Score : {anime.score}</span>
-                <span>Rank : {anime.rank}</span>
-                <span>Members: {anime.members}</span>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-        <div>
-          Character & Voice Actors
-          <Card>
-            <CardHeader className="w-40">
-              <CardTitle>{anime.title}</CardTitle>
-            </CardHeader>
-            <CardContent className="flex flex-col gap-2">
-              <CardDescription className="h-[220px] w-[160px] relative">
-                <Image
-                  src={anime.images.webp.large_image_url}
-                  alt={anime.title}
-                  sizes="100%"
-                  fill
-                  unoptimized
-                />
-              </CardDescription>
-              <div className="grid grid-cols-3">
                 <span>Score : {anime.score}</span>
                 <span>Rank : {anime.rank}</span>
                 <span>Members: {anime.members}</span>
