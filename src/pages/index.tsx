@@ -149,7 +149,7 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col m-10 items-center gap-2">
+    <div className="flex flex-col m-10 items-center gap-6">
       <div className="flex w-full max-w-sm justify-center items-center space-x-2">
         <Input
           type="search"
