@@ -14,8 +14,9 @@ import { Input } from "@/components/ui/input";
 import { Fragment, JSX, useState } from "react";
 import { useRouter } from "next/router";
 import { parseAsInteger, useQueryState } from "nuqs";
+import type { GetServerSideProps } from "next";
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const query = context.query;
   console.log(query);
 
@@ -80,7 +81,7 @@ export default function Home() {
     const pageNumbers = getPageNumbers();
 
     // Handle page changes
-    const handlePageChange = (page) => {
+    const handlePageChange = (page: number) => {
       if (page >= 1 && page <= totalPages) {
         setCurrentPage(page);
       }

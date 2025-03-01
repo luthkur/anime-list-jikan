@@ -1,14 +1,15 @@
 import { fetchAnimeById } from "@/hooks/useAnimeDetailsById";
 import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
+import type { GetServerSideProps } from "next";
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.query;
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
     queryKey: [`anime-detail-${id}`],
-    queryFn: () => fetchAnimeById(id),
+    queryFn: () => fetchAnimeById(parseInt(id as string)),
   });
 
   return {
@@ -23,7 +24,7 @@ const Anime = () => {
   const { id } = router.query;
   const { data } = useQuery({
     queryKey: [`anime-detail-${id}`],
-    queryFn: () => fetchAnimeById(id),
+    queryFn: () => fetchAnimeById(parseInt(id as string)),
   });
 
   let AnimeDetail = <div>List is Loading</div>;

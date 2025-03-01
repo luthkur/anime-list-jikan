@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import { AnimeDetailResponse } from "../types";
 
-const fetchAnimeById = async (id): Promise<AnimeDetailResponse> => {
+const fetchAnimeById = async (id: number): Promise<AnimeDetailResponse> => {
   const response = await fetch(`https://api.jikan.moe/v4/anime/${id}/full`);
   const data = await response.json();
   return data;

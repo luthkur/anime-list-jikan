@@ -7,8 +7,8 @@ import {
 } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
-
-const AnimeCard = ({ anime }) => {
+import type { Anime } from "@/types";
+const AnimeCard = ({ anime }: { anime: Anime }) => {
   return (
     <Card>
       <CardHeader className="w-40">
